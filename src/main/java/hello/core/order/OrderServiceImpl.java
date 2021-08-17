@@ -1,16 +1,20 @@
 package hello.core.order;
 
 import hello.core.discount.DiscountPolicy;
-import hello.core.discount.FixDiscountPolicy;
-import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
-import hello.core.member.MemmoryMemberRepository;
 
+
+//orderServiceImpl은 두가지의 객체가 필요하다 - discountPolicy와 MemberRepository의 객체
 public class OrderServiceImpl implements OrderService{
 
-    private final MemberRepository memberRepository= new MemmoryMemberRepository();
-    private final DiscountPolicy discountPolicy=new RateDiscountPolicy();
+    private final DiscountPolicy discountPolicy;
+    private final MemberRepository memberRepository;
+
+    public OrderServiceImpl(MemberRepository memberRepository,DiscountPolicy discountPolicy){
+        this.memberRepository=memberRepository;
+        this.discountPolicy=discountPolicy;
+    }
 
 
     @Override
