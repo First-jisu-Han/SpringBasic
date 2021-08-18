@@ -1,14 +1,17 @@
 package hello.core.member;
 
 import hello.core.AppConfig;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-// 순수 java 실행하는 테스트 - spring의 annotation @Test 없이 테스트 하는 것.
 public class MemberApp {
     public static void main(String[] args) {
-        AppConfig appConfig=new AppConfig();
+//        AppConfig appConfig=new AppConfig();
+//        MemberService memberService= appConfig.memberService();
 
-        // MemberService memberService =new MemberServiceImpl(new MemoryMemberRepository()); 와 같음
-        MemberService memberService= appConfig.memberService();
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        MemberService memberService=applicationContext.getBean("memberService",MemberService.class);
+        // 스프링 전환 -> AppConfig클래스에서 @Bean을 찾는데, 이름은 메서드 이름 기준으로 찾는다. name은 memberService이고 오른쪽은 타입이다.
 
         Member member=new Member(1L,"memberA",Grade.VIP);
         memberService.join(member);
