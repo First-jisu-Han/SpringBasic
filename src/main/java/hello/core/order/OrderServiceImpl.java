@@ -24,6 +24,12 @@ public class OrderServiceImpl implements OrderService{
 
         return new Order(memberId,itemName,itemPrice,discountPrice);
 
+    }
+    // 테스트 할 용도 - @Configuration 을통한 싱글톤 유지 확인 테스트
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
 
     }
+
+
 }
