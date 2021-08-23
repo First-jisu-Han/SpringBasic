@@ -39,6 +39,7 @@ public class ConfigurationSingletonTest {
         assertThat(orderService.getMemberRepository()).isSameAs(memberRepository);
 
 
+
     }
 
     @Test
