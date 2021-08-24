@@ -12,10 +12,10 @@ import org.springframework.context.annotation.FilterType;
         excludeFilters = @ComponentScan.Filter(type= FilterType.ANNOTATION, classes = Configuration.class) // @Configuration 이 붙은 것들은 제외시킨다. ( 기존에 @Configuration 을 붙여 직접만든 코드가 있기 때문에)
 )
 public class AutoAppConfig {
-    @Bean(name="memoryMemberRepository")
-    public MemoryMemberRepository memberRepository(){
-        return new MemoryMemberRepository();
+//    @Bean(name="memoryMemberRepository")
+//    public MemoryMemberRepository memberRepository(){
+//        return new MemoryMemberRepository();
     }
 
 
-}
+
