@@ -38,6 +38,7 @@ public class AllBeanTest {
         private final List<DiscountPolicy> policies;
 
         @Autowired
+        // Map<String,DiscountPolicy> - String 에 들어가는 것은 DiscountPolicy 타입의 스프링 빈 - Rate,Fix 등
         public DiscountService(Map<String, DiscountPolicy> policyMap,List<DiscountPolicy> policies) {
             this.policyMap=policyMap;
             this.policies=policies;
@@ -46,8 +47,10 @@ public class AllBeanTest {
         }
 
         public int discount(Member member, int price, String discountCode) {
+            // 생각해내기는 조금 어려운 코드
             DiscountPolicy discountPolicy=policyMap.get(discountCode);
             return discountPolicy.discount(member,price);
+            // return 하는 것은 할인 금액이다.
 
         }
     }
