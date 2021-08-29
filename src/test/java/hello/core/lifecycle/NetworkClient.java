@@ -2,7 +2,11 @@ package hello.core.lifecycle;
 
 
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 public class NetworkClient {
 
@@ -29,13 +33,14 @@ public class NetworkClient {
         System.out.println(" close " + url);
     }
 
-
+    @PostConstruct
     public void init() throws Exception{   //초기화 메서드이름
         System.out.println("NetworkClient.afterPropertiesSet");
         connect();
         call("초기화 연결 메세지");
     }
 
+    @PreDestroy
     public void close() throws Exception{   // 종료 메서드이름
         System.out.println("NetworkClient.destroy");
         disconnect();
